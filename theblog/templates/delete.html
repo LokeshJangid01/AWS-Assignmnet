@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}delete Post {{post.title}}{% endblock title %}
+{% block content %}
+
+
+
+{%if user.is_authenticated%}
+    {% if user.id == post.author.id%}
+    <div class = 'container'>
+        <h1>delete Post</h1>
+        <h3>delete Post  {{post.title}}</h3>
+        
+        <form method = 'POST'>
+            {% csrf_token %}
+            
+            <stronh>Are you Sure ? </strong>
+                <br/>
+            <button type="submit" class="btn btn-danger ">Delete</button>
+        </form>
+        </div>
+{%else%}
+
+    You are not alowed here <span style='font-size:30px;'>&#129324;</span>
+
+{%endif%}
+
+{%else%}
+    
+    You are not alowed here <span style='font-size:30px;'>&#129324;</span>
+    
+{%endif%}
+
+{% endblock content %}

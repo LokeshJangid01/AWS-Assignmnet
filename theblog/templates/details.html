@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{post.title_tag}}{% endblock title %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    <small>{{post.author}}</small>
+    <small>{{post.post_date}}</small>
+    <small>{{post.post_time}}</small>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.body|slice:"200"|safe}}</p>
+    {% if  user.is_authenticated %} 
+      {% if user.id == post.author.id%}
+        <a href="{% url 'updatePost' post.pk %}" class="btn btn-secondary">Edit</a>
+        <a href="{% url 'deletePost' post.pk %}" class="btn btn-danger">Delete</a>
+      {%endif%}
+                  
+    {% endif %}
+    <a href="{% url 'home' %}" class="btn btn-primary">Go Back</a>
+    
+  </div>
+  
+</div>
+{% endblock content %}
+
+

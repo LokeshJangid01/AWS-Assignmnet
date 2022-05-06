@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Update {{post.title}}{% endblock title %}
+{% block content %}
+
+{%if user.is_authenticated%}
+{% if user.id == post.author.id%}
+<div class = 'container'>
+    <h1>update Post</h1>
+    
+    <form method = 'POST'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+    </div>
+{%else%}
+
+    You are not alowed here <span style='font-size:30px;'>&#129324;</span>
+
+{%endif%}
+
+{%else%}
+    
+    You are not alowed here <span style='font-size:30px;'>&#129324;</span>
+    
+{%endif%}
+
+
+
+{% endblock content %}

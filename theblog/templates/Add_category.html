@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% block title %} Add new Category {% endblock title %}
+
+<div class = 'container'>
+<h1>Add New Category</h1>
+
+<form method = 'POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-success">Add Category</button>
+</form>
+</div>
+{% endblock content %}

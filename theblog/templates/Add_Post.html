@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated%}
+    <div class = 'container'>
+        <h1>Add Post</h1>
+        {{user.username}}
+        
+        <form method = 'POST'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-success">Post</button>
+        </form>
+        </div>
+
+        <script>
+            var name = "{{user.username}}";
+            document.getElementById("user").value = name;
+        </script> 
+
+{%endif%}
+
+
+
+{% endblock content %}
